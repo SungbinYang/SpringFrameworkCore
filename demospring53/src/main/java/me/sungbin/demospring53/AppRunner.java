@@ -1,6 +1,7 @@
 package me.sungbin.demospring53;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.ApplicationContext;
@@ -18,11 +19,15 @@ public class AppRunner implements ApplicationRunner {
     @Autowired
     BookRepository bookRepository;
 
+    @Value("${app.name}")
+    String appName;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         Environment environment = applicationContext.getEnvironment();
-        System.out.println("profile");
         System.out.println(Arrays.toString(environment.getActiveProfiles()));
         System.out.println(Arrays.toString(environment.getDefaultProfiles()));
+        System.out.println(environment.getProperty("app.name"));
+        System.out.println(appName);
     }
 }

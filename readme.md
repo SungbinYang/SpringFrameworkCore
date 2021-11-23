@@ -8,3 +8,4 @@
 - @Component와 컴포넌트 스캔
 - 빈의 스코프
 - Environment: 프로파일
+- Environment: 프로퍼티
