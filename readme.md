@@ -6,3 +6,4 @@
 - ApplicationContext와 다양한 빈 설정 방법
 - @Autowired
 - @Component와 컴포넌트 스캔
+- 빈의 스코프
