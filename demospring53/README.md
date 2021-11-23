@@ -22,3 +22,27 @@
         * 새로 만든 빈 인스턴스를 수정할 수 있는 라이프 사이클 인터페이스
     * [AutowiredAnnotationBeanPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.html) extends BeanPostProcessor
         * 스프링이 제공하는 @Autowired와 @Value 애노테이션 그리고 JSR-330의 @Inject 애노테이션을 지원하는 애노테이션 처리기.
+
+## @Component와 컴포넌트 스캔
+- 컨포넌트 스캔 주요 기능
+    * 스캔 위치 설정
+    * 필터: 어떤 애노테이션을 스캔 할지 또는 하지 않을지
+- @Component
+    * @Repository
+    * @Service
+    * @Controller
+    * @Configuration
+- 동작 원리
+    * @ComponentScan은 스캔할 패키지와 애노테이션에 대한 정보
+    * 실제 스캐닝은 ConfigurationClassPostProcessor라는 BeanFactoryPostProcessor에 의해 처리 됨.
+- function을 이용한 빈 등록 방법
+    ```java
+    public static void main(String[] args) {
+        new SpringApplicationBuilder().sources(Demospring51Application.class)
+    .initializers((ApplicationContextInitializer<GenericApplicationContext>)
+    applicationContext -> {
+    applicationContext.registerBean(MyBean.class);
+    })
+    .run(args);
+    }
+    ```
