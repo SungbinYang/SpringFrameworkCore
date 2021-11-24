@@ -11,3 +11,4 @@
 - Environment: 프로퍼티
 - MessageSource
 - ApplicationEventPublisher
+- ResourceLoader
