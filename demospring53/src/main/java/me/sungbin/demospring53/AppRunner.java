@@ -6,8 +6,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import java.util.Locale;
-
 @Component
 public class AppRunner implements ApplicationRunner {
 
@@ -16,10 +14,6 @@ public class AppRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        while (true) {
-            System.out.println(applicationContext.getMessage("greeting", new String[]{"sungbin"}, Locale.KOREA));
-            System.out.println(applicationContext.getMessage("greeting", new String[]{"sungbin"}, Locale.getDefault()));
-            Thread.sleep(1000L);
-        }
+        applicationContext.publishEvent(new MyEvent(this, 100));
     }
 }
