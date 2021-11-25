@@ -12,3 +12,7 @@
 - MessageSource
 - ApplicationEventPublisher
 - ResourceLoader
+
+## Resource / Validation
+
+- Resource 추상화
