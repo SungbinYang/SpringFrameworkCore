@@ -3,28 +3,36 @@ package me.sungbin.demospring53;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.context.ApplicationContext;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.Objects;
 
 @Component
 public class AppRunner implements ApplicationRunner {
 
     @Autowired
-    ApplicationContext applicationContext;
+    Validator validator;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println(applicationContext.getClass());
+        System.out.println(validator.getClass());
 
-        Resource resource = applicationContext.getResource("test.txt");
-        System.out.println(resource.getClass());
+        Event event = new Event();
+        event.setLimit(-1);
+        event.setEmail("aaa2");
+        Errors errors = new BeanPropertyBindingResult(event, "event");
 
-        System.out.println(resource.exists());
-        System.out.println(resource.getDescription());
-        System.out.println(Files.readString(Path.of(resource.getURI())));
+        validator.validate(event, errors);
+
+        System.out.println(errors.hasErrors());
+        errors.getAllErrors().forEach(e -> {
+            System.out.println("==== error code ====");
+            Arrays.stream(Objects.requireNonNull(e.getCodes())).forEach(System.out::println);
+            System.out.println(e.getDefaultMessage());
+        });
     }
 }

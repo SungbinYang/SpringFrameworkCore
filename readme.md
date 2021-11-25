@@ -16,3 +16,4 @@
 ## Resource / Validation
 
 - Resource 추상화
+- Validation 추상화
