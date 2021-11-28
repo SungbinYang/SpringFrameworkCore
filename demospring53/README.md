@@ -353,3 +353,33 @@ public class EventPropertyEditor extends PropertyEditorSupport {
   * 스프링 IoC: 기존 빈을 대체하는 동적 프록시 빈을 만들어 등록 시켜준다.
     * 클라이언트 코드 변경 없음.
     * [AbstractAutoProxyCreator](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/aop/framework/autoproxy/AbstractAutoProxyCreator.html) implements [BeanPostProcessor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html)
+
+## 스프링 AOP: @AOP
+- 애노테이션 기반의 스프링 @AOP
+- 의존성 추가
+
+  ```xml
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-aop</artifactId>
+  </dependency>
+  ```
+  
+- 애스팩트 정의
+  * @Aspect
+  * 빈으로 등록해야 하니까 (컴포넌트 스캔을 사용한다면) @Component도 추가.
+- 포인트컷 정의
+  * @Pointcut(표현식)
+  * 주요 표현식
+    * execution
+    * @annotation
+    * bean
+  * 포인트컷 조합
+    * &&, ||, !
+- 어드바이스 정의
+  * @Before
+  * @AfterReturning
+  * @AfterThrowing
+  * @Around
+- 참고
+  * https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop-pointcuts
