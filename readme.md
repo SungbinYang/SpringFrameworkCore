@@ -17,3 +17,7 @@
 
 - Resource 추상화
 - Validation 추상화
+
+## 데이터 바인딩
+
+- 데이터 바인딩 추상화: PropertyEditor
