@@ -306,3 +306,27 @@ public class EventPropertyEditor extends PropertyEditorSupport {
   * [스프링 데이터](https://spring.io/blog/2014/07/15/spel-support-in-spring-data-jpa-query-definitions)
     * @Query 애노테이션
   * [타임리프](https://blog.outsider.ne.kr/997)
+
+## 스프링 AOP: 개념 소개
+- Aspect-oriendted Programming (AOP)은 OOP를 보완하는 수단으로, 흩어진 Aspect를 모듈화 할 수 있는 프로그래밍 기법.
+- 흩어진 관심사 (Crosscutting Concerns)
+
+  ![](./img02.png)
+
+- AOP를 적용하면?
+  
+  ![](./img03.png)
+
+- AOP 주요 개념
+  * Aspect와 Target
+  * Advice
+  * Join point와 Pointcut
+- AOP 구현체
+  * https://en.wikipedia.org/wiki/Aspect-oriented_programming
+  * 자바
+    * AspectJ
+    * 스프링 AOP
+- AOP 적용 방법
+  * 컴파일
+  * 로드 타임
+  * 런타임
